@@ -1,0 +1,31 @@
+aws configure --profile default
+aws configure set aws_session_token "FwoGZXIvYXdzEIf//////////wEaDMS0SwVohRzKMbvpIyLVAX4r1eG/Yht91WeFsEk4P1p7xv2nAu7Nu1ddWgomvB7ReWx4On27MPQVpb2zCKfHD5zgZ8WamyAo1C4IN+AIx6IyWugTa8yrOLyGm3i5mWYtNf8LW8EgPtDrUugQngOAX46OQw0VdcFDfVNjrpfClbQ70EkPDrGgHIuaUDMuIm+DMZM97Lyc9a8go/1qSSKpI3BmSxNDSgXtPPt707nokNW3jxlhEJa9iO0qg0pIowLEMfhLLhz17y2MaR9qch9SRqvwTSYgKiWSbIRDWYUrTZyblS9HLiizse6iBjItwKGWoJZiv8qhrdxWrGLsNksudQ2I/J6ebn7SUJ0xhrbR7EcxLCR8F33cHW4E" --profile default
+setx AWS_ACCESS_KEY_ID ASIAQOYBMOFDR2CIHMUC
+setx AWS_SECRET_ACCESS_KEY eMPZzhK4GpQ3i40EIHELgONE8GsquCZGsbtldlEk
+setx AWS_DEFAULT_REGION us-west-2
+
+//check config profile
+aws iam list-users --profile default
+
+// creatte cluster
+eksctl create cluster --name eksctl-demo --nodes=2 --version=1.22 --instance-types=t2.medium --region=us-east-2 --profile default
+
+// Which command would you use to get the status of the nodes in your cluster?
+// Kubectl is used to communicate with a clusters control(master) system. It allows you to get the status of nodes, pods, and services.
+kubectl get nodes 
+
+// Delete cluster
+eksctl delete cluster eksctl-demo  --region=us-east-2  --profile default
+
+
+// Docker
+docker build -t leanhtuan9889/simple-flask .
+
+// Docker login
+docker login -u leanhtuan9889
+
+// Docker push
+docker push leanhtuan9889/simple-flask:latest
+
+
+aws eks update-kubeconfig --name eksctl-demo --region us-east-2 --profile default
